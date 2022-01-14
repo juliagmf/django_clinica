@@ -1,0 +1,27 @@
+{% extends 'clinica/base.html' %}
+
+{% block content %}
+{% load static %}
+       
+
+       
+        <center><img height="400" width="600" src="{% static 'indexi.svg' %}"></center>
+        <center><td>
+                <a class="btn btn-default" href="{% url 'listar_agenda' %}">
+                        <button type="button" class="btn btn-secondary btn-lg">Agenda</button>
+                </a>
+                <a class="btn btn-default" href="{% url 'listar_clientes' %}">
+                        <button type="button" class="btn btn-secondary btn-lg">Cliente</button>
+                </a>
+                <a class="btn btn-default" href="{% url 'listar_especialidades' %}">
+                        <button type="button" class="btn btn-secondary btn-lg">Especialidades</button>
+                </a>
+                <a class="btn btn-default" href="{% url 'listar_medicos' %}">
+                        <button type="button" class="btn btn-secondary btn-lg">Médicos</button>
+                </a>
+                
+        </td>
+        </center>>
+        
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends 'clinica/base.html' %}
+
+{% block content %}
+{% load static %}
+{% if user.is_authenticated %}
+        <h3>Hello {{user.username}}</h3>
+    {% else %}
+        <p>Você precisa realizar o login</p>
+    {% endif %}
+
+    {% if user.is_superuser %}
+                <td>
+                    <a class="btn btn-default" href="{% url 'cadastrar_medico' %}">
+                        <button type="button" class="btn btn-secondary btn-lg">Cadastrar Médico</button>
+                    </a>
+                </td>
+                {% endif %}
+
+     
+        <center><img height="400" width="600" src="{% static 'medicoslista.svg' %}"></center>
+        
+        {% for medico in medicos %}
+            
+            <a href="{% url 'detalhar_medico' id=medico.id %}">
+                {{ medico.nome }}
+            </a>
+            <br/>
+          
+
+        
+        {% endfor %} 
+{% endblock %}
+

@@ -1,0 +1,39 @@
+{% extends 'clinica/base.html' %}
+
+{% block content %}
+{% load static %}
+    
+{% if user.is_authenticated %}
+        <h3>Hello my friend {{user.username}}</h3>
+    
+    {% else %}
+        <p>Você precisa realizar o login</p>
+    {% endif %}
+
+    {% if user.is_superuser %}
+                <td>
+                    <a class="btn btn-default" href="{% url 'cadastrar_agenda' %}">
+                       
+                        <button type="button" class="btn btn-secondary btn-lg">Cadastrar Agenda</button>
+                    </a>
+                </td>
+                {% endif %}
+    {% if user.is_authenticated %}
+                <td>
+                    <a class="btn btn-default" href="{% url 'cadastrar_consulta' %}">
+                       
+                        <button type="button" class="btn btn-secondary btn-lg">Marcar Consulta</button>
+                    </a>
+                </td>
+                {% endif %}
+        <center><img height="400" width="600" src="{% static 'agendal.svg' %}"></center>
+        <h3>Agenda</h3>    
+        {% for agenda in agendas %}
+           
+            {{agenda.medico}}   <br>
+            {{agenda.data}}   <br>
+    
+           
+
+        {% endfor %} 
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'clinica/base.html' %}
+
+{% block content %}
+
+        <h3>Médico</h3>    
+        
+        Nome: {{ medico.nome }}<br/>
+        CRM: {{ medico.crm }}<br/>
+        {% if user.is_superuser %}
+        E-mail: {{ medico.email }}<br/>
+        Telefone: {{ medico.telefone }}<br/>
+        {% endif %}
+        Especialidade: {{ medico.especialidade }}<br/>
+           
+        <img height="300" width="250" src="{{ medico.imagem.url }}">
+        <br/>
+          
+{% endblock %}
+

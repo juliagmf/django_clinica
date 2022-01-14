@@ -1,0 +1,32 @@
+{% extends 'clinica/base.html' %}
+
+{% block content %}
+{% load static %}
+{% if user.is_authenticated %}
+        <h3>Hello {{user.username}}</h3>
+    {% else %}
+        <p>Você precisa realizar o login</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+                <td>
+                    <a class="btn btn-default" href="{% url 'cadastrar_cliente' %}">
+        
+                        <button type="button" class="btn btn-secondary btn-lg">Adicionar Dados</button>
+                    </a>
+                </td>
+                {% endif %}
+        <center><img height="400" width="600" src="{% static 'clientesl.svg' %}"></center>   
+        
+        {% if user.is_superuser %}
+        {% for cliente in clientes %}
+            
+            <a href="{% url 'detalhar_cliente' id=cliente.id %}">
+                {{ cliente.nome }}
+            </a>
+        <br/>
+
+        
+        {% endfor %} 
+        {% endif %}
+{% endblock %}

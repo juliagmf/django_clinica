@@ -1,0 +1,15 @@
+{% extends 'clinica/base.html' %}
+
+{% block content %}
+{% load static %}
+    <h2>Novo Especialidade</h2>
+    <center><img height="400" width="600" src="{% static 'espcad.svg' %}"></center>
+    <form method="POST" class="table" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+         </div>
+        <button type="submit" class="btn btn-secondary">Save</button>
+       
+    </form>
+{% endblock %}
